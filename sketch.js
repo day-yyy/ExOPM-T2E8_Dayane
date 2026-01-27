@@ -3,8 +3,13 @@ let playSom = false;
 
 let amp;
 
+let linhasTotal = 30
+let diametro = 30
+let linhaElipses;
+
+
 function preload() {
-    som = loadSound('./339501_robinhood76_06451-vampire-slow-hit-scream (online-audio-converter.com).mp3')
+    som = loadSound('./721862_xcreenplay_vampire-sleepwaking-pad (online-audio-converter.com).mp3')
 
 }
 
@@ -12,11 +17,6 @@ function setup() {
     createCanvas(windowWidth, windowHeight)
 
     amp = new p5.Amplitude()
-}
-
-function draw() {
-    background(255)
-
     let myRate = map(mouseX, 0, width, 0.1, 3.)
     som.rate(myRate)
 
@@ -27,8 +27,32 @@ function draw() {
 
     level = map(level, 0, 1, 10, 600)
     console.log(level)
-    fill(0)
+    fill(130, 7, 7)
+    stroke(61, 14, 14)
     ellipse(width / 2, height / 2, level, level)
+
+}
+
+
+function draw() {
+
+    background(109, 76, 112);
+    linhaElipses = width / diametro
+    stroke(255)
+    for (i = 0; i < linhaElipses; i++) {
+        for (j = 0; j < height; j += diametro) {
+            ellipse(0 + i * diametro, 0 + j, diametro, diametro)
+
+        }
+    }
+
+    for (i = 0; i < linhasTotal; i++) {
+        for (j = 0; j < linhasTotal; j += 10) {
+            stroke(random(0, 255), random(0, 255), random(0, 255))
+            line(random(0, width), random(0, height), random(0, width), random(0, height))
+
+        }
+    }
 }
 
 
